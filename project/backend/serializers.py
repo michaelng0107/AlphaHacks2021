@@ -6,6 +6,7 @@ class ListSerializer(serializers.ModelSerializer):
     class Meta:
         model = List
         fields = ['name', 'owner', 'tasks']
+        depth = 1
 
 class UserSerializer(serializers.ModelSerializer):
     lists = serializers.PrimaryKeyRelatedField(many=True, queryset=List.objects.all())
