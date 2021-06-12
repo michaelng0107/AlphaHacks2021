@@ -6,11 +6,28 @@ from .models import *
 from .serializers import *
 from django.http import Http404
 from rest_framework import generics
+from rest_framework import permissions
+
 
 
 # Create your views here.
 
-class Test(generics.ListCreateAPIView):
-    # queryset = .objects.all()
-    # serializer_class = Serializer
-    pass
+class ListView(generics.ListCreateAPIView):
+    queryset = List.objects.all()
+    serializer_class = ListSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class ListDetail(generics.RetrieveUpdateAPIView):
+    queryset = List.objects.all()
+    serializer_class = ListSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
