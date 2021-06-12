@@ -1,7 +1,12 @@
 <template>
     <div class="indexPage">
+        <nav class="login-nav">
+
+        </nav>
         <section class="title">
             <h1>Welcome to ToDo App</h1>
+
+            <p>Keep track of what you need to do easily! <br> Suited for work and school!</p>
         </section>
         <section class="login">
             <!-- <form class="login__box">
@@ -19,7 +24,7 @@
 </template>
 
 <script>
-import Login from './login.vue';
+import Login from '../components/login.vue';
 
 export default {
     name: 'index',
@@ -35,37 +40,59 @@ export default {
         background-color: aliceblue;
         width: 100%;
         height: 100%;
+        background-color: #c9e2ff;
     }
 
     .title{
         float: left;
-        background-color: aquamarine;
+        // background-color: aquamarine;
         width: 50%;
         height: 100%;
         font-family: Arial, Helvetica, sans-serif;
 
+        & > *{
+            width: 70%;
+            margin: auto;
+            text-align: left;
+        }
+
         & > h1{
             font-size: 2.5rem;
+
+            margin-top: 24vh;
+        }
+
+        & > p{
+            font-size: 1.2rem;
+            margin-top: 20px;
+            line-height: 1.5rem;
         }
     }
 
     .login{
         float: right;
-        background-color: red;
+        // background-color: red;
         width: 50%;
         height: 100%;
 
+        &-nav{
+            height: 80px;
+            position: fixed;
+            background: #242424;
+            width: 100%;
+        }
+
         &__box{
-            width: 40%;
+            width: clamp(300px, 50%, 600px);
             background-color: white;
             margin: auto;
             height: fit-content;
             display: flex;
             flex-direction: column;
             font-family: Arial, Helvetica, sans-serif;
-            padding: 25px 30px;
+            padding: 35px 30px;
             border-radius: 20px;
-            margin-top: 18vh;
+            margin-top: 20vh;
 
 
             & > h3{
