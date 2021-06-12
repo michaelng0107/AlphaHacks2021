@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.auth',
+    'rest_framework.authtoken',
 	'backend.apps.BackendConfig',
     'corsheaders',
     'djoser',
