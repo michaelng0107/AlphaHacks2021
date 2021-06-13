@@ -1,5 +1,5 @@
 <template>
-    <form class="login__box" method="GET" @submit.prevent='loginForm'>
+    <form class="login__box" method="GET" @submit.prevent='handleSubmit'>
         <h3>{{ whataction }}</h3>
         <label v-if="signup" for="">Name</label>
         <input v-if="signup" type="text" name="name" required v-model="name">
@@ -21,6 +21,28 @@
 
 <script>
 
+const loggingIn = async (token) => {
+    let reqheader = new Headers({'Authorization': "Bearer " + token});
+    let request = await fetch("url", {method: 'POST', headers: reqheader});
+    let status = request.then((res) => {return res.json()});
+}
+
+async function handleSubmit() {
+  //...
+  // Make the login API call
+    console.log("User logs in");
+    let form = document.querySelector(".login__box");
+    let formData = new FormData(form);
+
+    let request = await fetch(`/auth/login`, {method: 'POST', body: formData,});
+
+    const jwt_token = request.then((response) => {return response.json()});
+
+    localStorage.setItem("token", jwt_token);
+    // Extract the JWT from the response
+    // const { jwt_token } = await response.json()
+    loggingIn(jwt_token);
+}
 
 export default {
     name:"login",
@@ -51,9 +73,23 @@ export default {
             }
         },
 
-        loginForm(){
-            console.log("HEY");
-        },
+        // loginForm(){
+        //     console.log("HEY");
+        //     let name = "";
+        //     let username = this.username;
+        //     let password = this.password;
+
+        //     if(this.signup == true){
+        //         name = this.name;
+        //     }
+
+        //     const response = await fetch(`/auth/login`, {
+        //         method: 'POST',
+        //         body: JSON.stringify({ username, password }),
+     
+        //     })
+
+        // },
 
         signUpForm(){
             console.log("HEY");

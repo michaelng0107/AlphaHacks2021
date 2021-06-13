@@ -1,54 +1,30 @@
 <template>
-
-  <!-- <img v-on:click="change()" alt="Vue logo" src="./assets/logo.png" class="logohead"> -->
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <Index/>
+	<div id="nav">
+	<router-link to="/">Home</router-link> |
+	<router-link to="/about">About</router-link>
+	</div>
 
 </template>
 
-<script>
-// import HelloWorld from './components/HelloWorld.vue'
-import Index from './views/index.vue'
-
-export default {
-    name: 'App',
-    components: {
-    // HelloWorld
-        Index
-    },
-    methods:{
-        change(){
-            console.log("You clicked");
-            document.querySelector(".logohead").style.border = "solid 2px red";
-
-        }
-    }
-}
-</script>
-
-<style>
-
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body, html{
-    height: 100%;
-    width: 100%;
-}
-
-img{
-  border: solid 2px black;
-}
-
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>

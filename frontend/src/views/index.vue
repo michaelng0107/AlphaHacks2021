@@ -36,6 +36,19 @@ export default {
 </script>
 
 <style lang="scss">
+
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body, html{
+        height: 100%;
+        width: 100%;
+    }
+    img{
+    border: solid 2px black;
+    }
     .indexPage{
         background-color: aliceblue;
         width: 100%;
